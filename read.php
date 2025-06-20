@@ -19,9 +19,33 @@ $result = $conn->query("SELECT * FROM posts ORDER BY created_at DESC");
             padding: 20px;
         }
 
+        .search-bar {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 10px;
+            width: 250px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .search-bar button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #007187;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .search-bar button:hover {
+            background-color: #005b6e;
+        }
+
         .container {
             max-width: 900px;
-            margin: 50px auto;
+            margin: 40px auto;
             background: #fff;
             padding: 35px 40px;
             border-radius: 12px;
@@ -88,24 +112,32 @@ $result = $conn->query("SELECT * FROM posts ORDER BY created_at DESC");
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>All Posts</h2>
 
-        <?php if ($result->num_rows > 0): ?>
-            <?php while ($row = $result->fetch_assoc()): ?>
-                <div class="post">
-                    <h3><?= htmlspecialchars($row['title']) ?></h3>
-                    <p><?= nl2br(htmlspecialchars($row['content'])) ?></p>
-                    <small> Posted on <?= htmlspecialchars($row['created_at']) ?></small>
-                </div>
-            <?php endwhile; ?>
-        <?php else: ?>
-            <p style="text-align: center; color: #999;">No posts available.</p>
-        <?php endif; ?>
+<div class="search-bar">
+    <form method="get" action="search.php">
+        <input type="text" name="q" placeholder="Search posts..." required />
+        <button type="submit">Search</button>
+    </form>
+</div>
 
-        <div class="back-link">
-            <a href="main.php">⬅ Back to Dashboard</a>
-        </div>
+<div class="container">
+    <h2>All Posts</h2>
+
+    <?php if ($result->num_rows > 0): ?>
+        <?php while ($row = $result->fetch_assoc()): ?>
+            <div class="post">
+                <h3><?= htmlspecialchars($row['title']) ?></h3>
+                <p><?= nl2br(htmlspecialchars($row['content'])) ?></p>
+                <small>Posted on <?= htmlspecialchars($row['created_at']) ?></small>
+            </div>
+        <?php endwhile; ?>
+    <?php else: ?>
+        <p style="text-align: center; color: #999;">No posts available.</p>
+    <?php endif; ?>
+
+    <div class="back-link">
+        <a href="main.php">⬅ Back to Dashboard</a>
     </div>
+</div>
 </body>
 </html>

@@ -1,52 +1,36 @@
-# PHP MySQL CRUD Blog Application
+# 📌 Advanced Features Implementation - PHP Blog Application
 
-## What Has Been Implemented
+## 🚀 Task 3 - Internship Project
 
-### 🔐 User Authentication
-- User registration with fields: Full Name, Email, Username, Password
-- Passwords are securely hashed using `password_hash()`
-- Login form verifies credentials using `password_verify()`
-- Sessions are used to manage login/logout states
-- Access to CRUD operations is restricted to authenticated users
+This repository contains the updated version of a **PHP-based blog application** enhanced with advanced features including **search functionality**, **pagination**, and **user interface improvements** using **CSS**.
 
-### 📝 Post Management (CRUD Operations)
-- **Create**:  
-  Users can create a post with a title and content using a clean form interface.  
-  After submission, the post is stored in the `posts` table and a success message is shown.
+---
 
-- **Read**:  
-  All posts are displayed in a styled layout, ordered by creation date.  
-  Each post displays its title, content, and the date it was created.  
-  Posts have options to update or delete them.
+## 📋 Objective
 
-- **Update**:  
-  Users can update any post.  
-  All posts are shown with editable fields and an "Update" button per post.  
-  A confirmation message is shown after successful update.
+- Enhance the application with advanced features like **search** and **pagination**.
+- Improve the **user interface** for a better user experience.
 
-- **Delete**:  
-  All posts are listed with a "Delete" button per post.  
-  A confirmation prompt is displayed before deletion.  
-  A message is shown after successful deletion.
+---
 
-### 🗃️ Database
-- MySQL database named `blog`
-- Two tables:
-  - `users`: stores user credentials and profile info
-  - `posts`: stores blog post data with timestamp
+## ✅ Features Implemented
 
-### 💅 Styling
-- Inline CSS used in each PHP file for simplicity
-- Modern and light UI with:
-  - Styled input fields
-  - Buttons for actions
-  - Consistent color scheme across pages
+### 🔍 1. Search Functionality
+- A search bar is included on **Create**, **Read**, and **Edit** pages.
+- Users can search posts by **title** or **content** using keywords.
+- PHP handles the search query and dynamically displays matching posts.
 
-### 🔄 Navigation
-- Dashboard (`main.php`) provides buttons to:
-  - Create Post
-  - Read Post
-  - Update Post
-  - Delete Post
-  - Logout
+### 📄 2. Pagination
+- Implemented pagination on the **Read Posts** page.
+- Displays a limited number of posts per page (e.g., 5 per page).
+- Includes **Next** and **Previous** navigation links for better usability.
+
+### 🎨 3. User Interface Improvements
+- Applied modern, clean **CSS styles** for a professional look.
+- Ensured consistent UI/UX across Create, Read, Edit pages.
+- Designed for better readability and accessibility.
+- (Optional) Bootstrap can be integrated for responsive design if needed.
+
+---
+
 

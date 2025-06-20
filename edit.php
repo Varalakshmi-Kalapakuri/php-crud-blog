@@ -33,24 +33,49 @@ $result = $conn->query("SELECT * FROM posts ORDER BY created_at DESC");
     <title>Edit Posts</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             background-color: #BFFCDD;
             margin: 0;
             padding: 20px;
         }
 
+        .search-bar {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 10px;
+            width: 250px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .search-bar button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #007187;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .search-bar button:hover {
+            background-color: #005b6e;
+        }
+
         .container {
             max-width: 750px;
-            margin: auto;
+            margin: 40px auto;
             background: #fff;
-            padding: 25px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            border-radius: 8px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
         }
 
         h2 {
-            color: #333;
-            margin-bottom: 20px;
+            color: #007187;
+            margin-bottom: 25px;
+            text-align: center;
         }
 
         .message {
@@ -67,7 +92,7 @@ $result = $conn->query("SELECT * FROM posts ORDER BY created_at DESC");
             margin-bottom: 30px;
             border: 1px solid #ddd;
             padding: 20px;
-            border-radius: 5px;
+            border-radius: 8px;
             background-color: #fdfdfd;
         }
 
@@ -83,7 +108,7 @@ $result = $conn->query("SELECT * FROM posts ORDER BY created_at DESC");
             padding: 10px;
             margin-top: 6px;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            border-radius: 5px;
         }
 
         .update-btn {
@@ -92,7 +117,7 @@ $result = $conn->query("SELECT * FROM posts ORDER BY created_at DESC");
             padding: 10px 20px;
             margin-top: 15px;
             border: none;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
         }
 
@@ -112,10 +137,19 @@ $result = $conn->query("SELECT * FROM posts ORDER BY created_at DESC");
 
         .actions {
             margin-bottom: 20px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
+
+<div class="search-bar">
+    <form method="get" action="search.php">
+        <input type="text" name="q" placeholder="Search posts..." required />
+        <button type="submit">Search</button>
+    </form>
+</div>
+
 <div class="container">
     <div class="actions">
         <a href="read.php" class="nav-link">← Back to Posts</a> |
@@ -145,7 +179,7 @@ $result = $conn->query("SELECT * FROM posts ORDER BY created_at DESC");
             </div>
         <?php endwhile; ?>
     <?php else: ?>
-        <p>No posts available to edit.</p>
+        <p style="text-align: center;">No posts available to edit.</p>
     <?php endif; ?>
 </div>
 </body>

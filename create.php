@@ -33,9 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
+            padding-top: 40px;
         }
 
         .form-container {
@@ -60,13 +60,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             border: 1.5px solid #ccc;
             border-radius: 6px;
             font-size: 15px;
-            transition: border-color 0.3s;
-        }
-
-        input[type="text"]:focus,
-        textarea:focus {
-            border-color: #4a90e2;
-            outline: none;
         }
 
         input[type="submit"] {
@@ -79,7 +72,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-weight: bold;
             border-radius: 6px;
             cursor: pointer;
-            transition: background-color 0.3s;
         }
 
         input[type="submit"]:hover {
@@ -87,46 +79,56 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         .back-link {
-            display: block;
             text-align: center;
             margin-top: 20px;
         }
 
-        .back-link a {
-            color: #4a90e2;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .back-link a:hover {
-            text-decoration: underline;
-        }
-
-        .success {
-            background-color: #e8f6ef;
-            color: #5a4caf;
-            border: 1px solid #c9eadb;
+        .success, .error {
             padding: 12px;
             margin-bottom: 20px;
             border-radius: 6px;
             text-align: center;
         }
 
-        .error {
-            background-color: #fdecea;
-            color: #a94442;
-            border: 1px solid #f5c2c2;
-            padding: 12px;
-            margin-bottom: 20px;
-            border-radius: 6px;
+        .success { background-color: #e8f6ef; color: #5a4caf; }
+        .error { background-color: #fdecea; color: #a94442; }
+
+        /* Search bar */
+        .search-bar {
+            margin-bottom: 25px;
             text-align: center;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 10px;
+            width: 250px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .search-bar button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #007187;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .search-bar button:hover {
+            background-color: #005b6e;
         }
     </style>
 </head>
 <body>
+    <div class="search-bar">
+        <form method="get" action="search.php">
+            <input type="text" name="q" placeholder="Search posts..." required />
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
     <div class="form-container">
         <h2>Create New Post</h2>
-
         <?php if ($message): ?>
             <div class="<?= $message_class ?>"><?= htmlspecialchars($message) ?></div>
         <?php endif; ?>
